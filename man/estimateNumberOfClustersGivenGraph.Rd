@@ -1,28 +1,28 @@
-\name{SNF}
-\alias{SNF}
+\name{estimateNumberOfClustersGivenGraph}
+\alias{estimateNumberOfClustersGivenGraph}
 \title{
-Similarity Network Fusion
+Estimate Number Of Clusters Given Graph
 }
 \description{
-Similarity Network Fusion takes multiple views of a network and fuses them together to construct an overall status matrix. The input to our algorithm can be feature vectors, pairwise distances, or pairwise similarities. The learned status matrix can then be used for retrieval, clustering, and classification.
+This function estimates the number of clusters given the two huristics given in the supplementary materials of our nature method paper W is the similarity graph NUMC is a vector which contains the possible choices of number of clusters.
 }
 \usage{
-SNF(Wall, K, t)
+estimateNumberOfClustersGivenGraph(W, NUMC=2:5) 
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{Wall}{
+  \item{W}{
 List of matrices. Each element of the list is a square, symmetric matrix that shows affinities of the data points from a certain view.
 }
-  \item{K}{
-Number of neighbors in K-nearest neighbors part of the algorithm.
-}
-  \item{t}{
-Number of iterations for the diffusion process.
+  \item{NUMC}{
+A vector which contains the possible choices of number of clusters.
 }
 }
 \value{
-W is the overall status matrix derived
+K1 is the estimated best number of clusters according to eigen-gaps
+K12 is the estimated SECOND best number of clusters according to eigen-gaps    
+K2 is the estimated number of clusters according to rotation cost
+K22 is the estimated SECOND number of clusters according to rotation cost
 }
 \references{
 B Wang, A Mezlini, F Demir, M Fiume, T Zu, M Brudno, B Haibe-Kains, A Goldenberg (2014) Similarity Network Fusion: a fast and effective method to aggregate multiple data types on a genome wide scale. Nature Methods. Online. Jan 26, 2014  
@@ -38,7 +38,7 @@ Dr. Anna Goldenberg, Bo Wang, Aziz Mezlini, Feyyaz Demir
 \examples{
 
 ## First, set all the parameters:
-K = 20;		# number of neighbors, usually (10~30)
+K = 20;  	# number of neighbors, usually (10~30)
 alpha = 0.5;  	# hyperparameter, usually (0.3~0.8)
 T = 20; 	# Number of Iterations, usually (10~20)
 
@@ -97,4 +97,10 @@ labels = spectralClustering(W, C)
 
 plot(Data1, col=labels, main='Data type 1')
 plot(Data2, col=labels, main='Data type 2')
+
+## Here we provide two ways to estimate the number of clusters. Note that,
+## these two methods cannot guarantee the accuracy of esstimated number of
+## clusters, but just to offer two insights about the datasets.
+
+estimationResult = estimateNumberOfClustersGivenGraph(W, 2:5);
 }

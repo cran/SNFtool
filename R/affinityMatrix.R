@@ -8,7 +8,7 @@ affinityMatrix <- function(Diff,K=20,sigma=0.5) {
   finiteMean <- function(x) { mean(x[is.finite(x)]) }
   means = apply(sortedColumns[,1:K+1],1,finiteMean)+.Machine$double.eps;
   
-  avg <- function(x,y) (x+y)
+  avg <- function(x,y) ((x+y)/2)
   Sig = outer(means,means,avg)/3*2 + Diff/3 + .Machine$double.eps;
   Sig[Sig <= .Machine$double.eps] = .Machine$double.eps
   densities = dnorm(Diff,0,sigma*Sig,log = FALSE)

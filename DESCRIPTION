@@ -1,7 +1,7 @@
 Package: SNFtool
 Type: Package
 Title: Similarity Network Fusion
-Version: 2.0.3
+Version: 2.1
 Date: 2014-03-03
 Author: Bo Wang, Aziz Mezlini, Feyyaz Demir, Marc Fiume, Zhuowen Tu, Michael Brudno, Benjamin Haibe-Kains, Anna Goldenberg
 Maintainer: Bo Wang <wangbo.yunze@gmail.com>
@@ -9,4 +9,4 @@ Description: Similarity Network Fusion takes multiple views of a network and fus
 License: GPL
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2014-03-04 01:00:43
+Date/Publication: 2014-03-29 07:07:26
