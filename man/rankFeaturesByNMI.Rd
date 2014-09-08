@@ -1,26 +1,24 @@
-\name{displayClusters}
-\alias{displayClusters}
-%- Also NEED an '\alias' for EACH other topic documented here.
+\name{rankFeaturesByNMI}
+\alias{rankFeaturesByNMI}
 \title{
-Plot given similarity matrix by clusters
+Rank Features by NMI
 }
 \description{
-Visualize the clusters in given similarity matrix
+Ranks each features by NMI based on their clustering assingments
 }
 \usage{
-displayClusters(W, group)
+rankFeaturesByNMI(data, W) 
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{W}{
-Similarity matrix
+  \item{data}{
+List containing all the data types.
 }
-  \item{group}{
-A vector containing the labels for each sample in W. 
+  \item{W}{
+Target Matrix for which the NMI is calculated against.
 }
 }
 \value{
-Plots given similarity matrix with patients ordered to form clusters.
+List containing the NMI and rank based on NMI for each feature. 
 }
 \author{
 Dr. Anna Goldenberg, Bo Wang, Aziz Mezlini, Feyyaz Demir
@@ -30,9 +28,9 @@ Dr. Anna Goldenberg, Bo Wang, Aziz Mezlini, Feyyaz Demir
 \examples{
 
 ## First, set all the parameters:
-K = 20;			# number of neighbors, usually (10~30)
+K = 20;		# number of neighbors, usually (10~30)
 alpha = 0.5;  	# hyperparameter, usually (0.3~0.8)
-T = 10; 		# Number of Iterations, usually (10~20)
+T = 20; 	# Number of Iterations, usually (10~20)
 
 ## Data1 is of size n x d_1, 
 ## where n is the number of patients, d_1 is the number of genes, 
@@ -56,6 +54,7 @@ truelabel = c(matrix(1,100,1),matrix(2,100,1)); ## the ground truth of the simul
 # Data2 = standardNormalization(Data2);
 
 
+
 ## Calculate the pair-wise distance; 
 ## If the data is continuous, we recommend to use the function "dist2" as follows 
 Dist1 = dist2(as.matrix(Data1),as.matrix(Data1));
@@ -65,8 +64,10 @@ Dist2 = dist2(as.matrix(Data2),as.matrix(Data2));
 W1 = affinityMatrix(Dist1, K, alpha)
 W2 = affinityMatrix(Dist2, K, alpha)
 
-## These similarity graphs have complementary information about clusters.
-displayClusters(W1, truelabel);
-displayClusters(W2, truelabel);
+## next, we fuse all the graphs
+## then the overall matrix can be computed by similarity network fusion(SNF):
+W = SNF(list(W1,W2), K, T)
+
+NMI_scores <- rankFeaturesByNMI(list(Data1, Data2), W)
 
 }
