@@ -39,7 +39,7 @@ estimateNumberOfClustersGivenGraph <- function(W, NUMC=2:5) {
     L = D - W
     Di = diag(1 / sqrt(degs))
     L = Di %*% L %*% Di
-    
+    print(dim(L))
     # compute the eigenvectors corresponding to the k smallest
     # eigs$valuess
     eigs = eigen(L)

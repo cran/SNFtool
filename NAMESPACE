@@ -1,2 +1,5 @@
 import(heatmap.plus)
+importFrom("grDevices", "grey")
+importFrom("graphics", "image")
+importFrom("stats", "dnorm", "heatmap", "median")
 exportPattern("^[^\\.]") 

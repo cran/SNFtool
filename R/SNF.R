@@ -9,7 +9,14 @@ SNF <- function(Wall,K=20,t=20) {
     ###You can do various applications on this graph, such as clustering(subtyping), classification, prediction.
     
     LW = length(Wall)
-    normalize <- function(X) X / rowSums(X)
+    #normalize <- function(X) X / rowSums(X)
+
+    #New normalization method
+    normalize <- function(X){
+        X <- X/(2*(rowSums(X) - diag(X)))
+        diag(X) <- 0.5
+        return(X)
+    }
     # makes elements other than largest K zero
     
     
@@ -39,10 +46,10 @@ SNF <- function(Wall,K=20,t=20) {
       }
       ###Normalize each new obtained networks.
       for(j in 1 : LW){
-      	      
-                Wall[[j]] = nextW[[j]] + diag(nrow(Wall[[j]]));
-                Wall[[j]] = (Wall[[j]] + t(Wall[[j]]))/2;
-                }
+      	  #Adding normalization after each iteration
+          Wall[[j]] <- normalize(nextW[[j]])
+          Wall[[j]] = (Wall[[j]] + t(Wall[[j]]))/2;
+      }
    }
     
     # construct the combined affinity matrix by summing diffused matrices
@@ -53,7 +60,9 @@ SNF <- function(Wall,K=20,t=20) {
     W = W/LW;
     W = normalize(W);
     # ensure affinity matrix is symmetrical
-    W = (W + t(W)+diag(nrow(W))) / 2;
+
+    #Removed addition of diag(W) before centering
+    W = (W + t(W)) / 2;
     
     return(W)  
   }
