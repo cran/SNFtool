@@ -5,7 +5,7 @@
 Concordance Network NMI calculation
 }
 \description{
-Given a list of affinity matrices, Wall, the number of clusters, return a matrix containing the NMIs between cluster assignments made with spectral clustering.
+Given a list of affinity matrices, Wall, the number of clusters, return a matrix containing the NMIs between cluster assignments made with spectral clustering on all matrices provided.
 }
 \usage{
 concordanceNetworkNMI(Wall, C)
@@ -43,7 +43,7 @@ T = 20 # number of iterations of SNF
 #dataL = lapply(dataL, standardNormalization)
 
 # Calculate the distances for each view
-distL = lapply(dataL, function(x) dist2(x, x))
+distL = lapply(dataL, function(x) (dist2(x, x)^(1/2)))
 
 # Construct the similarity graphs
 affinityL = lapply(distL, function(x) affinityMatrix(x, K, alpha))

@@ -45,8 +45,8 @@ data(Data2)
 
 ## Calculate distance matrices (here we calculate Euclidean Distance, 
 ## you can use other distance, e.g. correlation)
-Dist1 = dist2(as.matrix(Data1),as.matrix(Data1))
-Dist2 = dist2(as.matrix(Data2),as.matrix(Data2))
+Dist1 = (dist2(as.matrix(Data1),as.matrix(Data1)))^(1/2)
+Dist2 = (dist2(as.matrix(Data2),as.matrix(Data2)))^(1/2)
 
 ## Next, construct similarity graphs
 W1 = affinityMatrix(Dist1, K, alpha)

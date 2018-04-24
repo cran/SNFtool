@@ -5,25 +5,24 @@
 Pairwise Chi-squared distances
 }
 \description{
+Wrapper function chi2Dist imported from 'ExPosition' package.
 Computes the Chi-squared distances between all pairs of data point given
 }
 \usage{
-chiDist2(A, B)
+chiDist2(A)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{A}{
 A data matrix where each row is a different data point
 }
-  \item{B}{
-A data matrix where each row is a different data point. If this matrix is the same as X, pairwise distances for all data points are computed.
-}
 }
 \value{
-Returns an N x M matrix where N is the number of rows in X and M is the number of rows in M. element (n,m) is the squared Chi-squared distance between nth data point in X and mth data point in C
+Returns an N x N matrix where N is the number of rows in X. element (i,j) is the squared Chi-squared distance between ith data point in X and jth data point in X.
 }
 \author{
 Dr. Anna Goldenberg, Bo Wang, Aziz Mezlini, Feyyaz Demir
+
 }
 \examples{
 
@@ -36,7 +35,7 @@ data(Data2)
 
 ## Calculate distance matrices(here we calculate Euclidean Distance, 
 ## you can use other distance, e.g. correlation)
-Dist1 = chiDist2(as.matrix(Data1), as.matrix(Data1))
-Dist2 = chiDist2(as.matrix(Data2), as.matrix(Data2))
+Dist1 = chiDist2(as.matrix(Data1))
+Dist2 = chiDist2(as.matrix(Data2))
 
 }

@@ -1,18 +1,14 @@
-chiDist2 <- function(A,B){
-	###This function implements the Chi-Square distance between A and B
-  n = nrow(A)
-  m = nrow(B)
-   d = ncol(A)
-   stopifnot(d == ncol(B))
-   res = matrix(nrow = n, ncol = m)
-   sqA = A^2
-   sqB = B^2
-   twoAB = 2 * (A %*% t(B))
-   for (a_num in 1:n) {
-   	for (b_num in 1:m) {
-   		res[a_num, b_num] = sum((sqA[a_num, ] + sqB[b_num, ] - twoAB[a_num, b_num]) / (A[a_num, ] + B[b_num, ]))
-   		}
-   		}
-   		res = res / 2
-   		return(res)  
+chiDist2 <- function(A){
+    # Calculates the pairwise chi-square distance between all rows in a given matrix.
+    # Uses chi2Dist from 'ExPosition' package
+    #
+    # Args:
+    #   A: Matrix with rows representing samples
+    # 
+    # Returns:
+    #   D: NxN matrix where N is the number of rows in A. Element i,j in 
+    #       the returned matrix is the chi-square distance between A[i,]
+    #        and A[j,].
+
+    return(chi2Dist(A)$D)
 }

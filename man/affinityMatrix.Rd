@@ -8,11 +8,11 @@ Affinity matrix calculation
 Computes affinity matrix from a generic distance matrix
 }
 \usage{
-affinityMatrix(Diff, K, sigma)
+affinityMatrix(diff, K = 20, sigma = 0.5)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{Diff}{
+  \item{diff}{
 Distance matrix
 }
   \item{K}{
@@ -48,8 +48,8 @@ data(Data2)
 
 ## Calculate distance matrices(here we calculate Euclidean Distance, 
 ## you can use other distance, e.g. correlation)
-Dist1 = dist2(as.matrix(Data1),as.matrix(Data1))
-Dist2 = dist2(as.matrix(Data2),as.matrix(Data2))
+Dist1 = (dist2(as.matrix(Data1),as.matrix(Data1)))^(1/2)
+Dist2 = (dist2(as.matrix(Data2),as.matrix(Data2)))^(1/2)
 
 ## Next, construct similarity graphs
 W1 = affinityMatrix(Dist1, K, alpha)

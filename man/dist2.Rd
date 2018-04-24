@@ -2,10 +2,10 @@
 \alias{dist2}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Pairwise Euclidean distances
+Pairwise squared Euclidean distances
 }
 \description{
-Computes the Euclidean distances between all pairs of data point given
+Computes the squared Euclidean distances between all pairs of data point given
 }
 \usage{
 dist2(X, C)

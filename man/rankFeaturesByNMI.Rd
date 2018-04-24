@@ -57,8 +57,8 @@ truelabel = c(matrix(1,100,1),matrix(2,100,1)); ## the ground truth of the simul
 
 ## Calculate the pair-wise distance; 
 ## If the data is continuous, we recommend to use the function "dist2" as follows 
-Dist1 = dist2(as.matrix(Data1),as.matrix(Data1));
-Dist2 = dist2(as.matrix(Data2),as.matrix(Data2));
+Dist1 = (dist2(as.matrix(Data1),as.matrix(Data1)))^(1/2)
+Dist2 = (dist2(as.matrix(Data2),as.matrix(Data2)))^(1/2)
 
 ## next, construct similarity graphs
 W1 = affinityMatrix(Dist1, K, alpha)
