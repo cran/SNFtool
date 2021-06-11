@@ -30,7 +30,7 @@ displayClustersWithHeatmap <- function (W, group, ColSideColors=NULL,...) {
         }
 
         else{
-            heatmap.plus(W[ind, ind],scale="none",Rowv=NA,Colv=NA,
+            heatmapPlus(W[ind, ind],scale="none",Rowv=NA,Colv=NA,
                 ColSideColors=ColSideColors[ind,],...)
         }
     }

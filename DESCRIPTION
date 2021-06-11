@@ -1,14 +1,14 @@
 Package: SNFtool
 Type: Package
 Title: Similarity Network Fusion
-Version: 2.3.0
-Date: 2018-04-24
+Version: 2.3.1
+Date: 2021-06-10
 Author: Bo Wang, Aziz Mezlini, Feyyaz Demir, Marc Fiume, Zhuowen Tu, Michael Brudno, Benjamin Haibe-Kains, Anna Goldenberg
-Maintainer: Daniel Cole <goldenberglab@gmail.com>
-Imports: heatmap.plus, ExPosition, alluvial
+Maintainer: Benjamin Brew <goldenberglab@gmail.com>
+Imports: ExPosition, alluvial
 Description: Similarity Network Fusion takes multiple views of a network and fuses them together to construct an overall status matrix. The input to our algorithm can be feature vectors, pairwise distances, or pairwise similarities. The learned status matrix can then be used for retrieval, clustering, and classification.
 License: GPL
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2018-04-24 16:23:07 UTC
-Packaged: 2018-04-24 15:59:51 UTC; danielcole
+Date/Publication: 2021-06-11 08:40:15 UTC
+Packaged: 2021-06-10 21:44:03 UTC; benbrew88
